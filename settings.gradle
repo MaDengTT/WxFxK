@@ -1,1 +1,1 @@
-include ':app', ':common', ':common-res', ':router', ':component-news'
+include ':app', ':common', ':common-res', ':router', ':component-news',":component-circle"

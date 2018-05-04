@@ -9,10 +9,15 @@ if(isRunAlone){
 apply plugin: 'com.alibaba.arouter'
 
 android {
+
     compileSdkVersion rootProject.ext.android.compileSdkVersion
     defaultConfig{
         if(isRunAlone){
-            applicationId rootProject.ext.android.organization + "."+componentName
+            if(componentName == "circle"){
+                applicationId "com.kcrason.highperformancefriendscircle"
+            }else{
+                applicationId rootProject.ext.android.organization + "."+componentName
+            }
             multiDexEnabled true
         }
 
@@ -26,6 +31,8 @@ android {
                 arguments = [ moduleName : project.getName() ]
             }
         }
+
+
     }
 
     if(isRunAlone){

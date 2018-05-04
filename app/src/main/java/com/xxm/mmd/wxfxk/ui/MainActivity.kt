@@ -2,7 +2,6 @@ package com.xxm.mmd.wxfxk.ui
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import com.airbnb.deeplinkdispatch.DeepLink
 import com.xxm.mmd.router.RouterConstants
 import com.xxm.mmd.router.RouterUtils
 import com.xxm.mmd.wxfxk.R
@@ -18,7 +17,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        tv_1.setOnClickListener { _ ->RouterUtils.getInstance().build(RouterConstants.PATH_NEW_MAIN).navigation() }
+        tv_1.setOnClickListener { _ ->RouterUtils.getInstance().build(RouterConstants.PATH_Circle_MAIN).navigation() }
 
         Observable.create(ObservableOnSubscribe<String> {
             emitter ->

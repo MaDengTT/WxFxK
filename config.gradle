@@ -14,8 +14,10 @@ ext{
             "acgnews",
             "acgschedule",
             "acgcomic",
-            "news"
+            "news",
+            "circle"
     ]
+
 
     def dependVersion = [
             support : "27.1.1",
