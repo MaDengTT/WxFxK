@@ -1,0 +1,81 @@
+apply plugin: 'com.android.library'
+apply plugin: 'com.alibaba.arouter'
+//Properties properties = new Properties()
+//File localPropertiesFile = project.rootProject.file("local.properties");
+//if (localPropertiesFile.exists()) {
+//    properties.load(localPropertiesFile.newDataInputStream())
+//}
+
+
+android {
+    compileSdkVersion rootProject.ext.android.compileSdkVersion
+
+
+
+    defaultConfig {
+        minSdkVersion rootProject.ext.android.minSdkVersion
+        targetSdkVersion rootProject.ext.android.targetSdkVersion
+        versionCode 1
+        versionName "1.0"
+
+//        //app version code
+//        buildConfigField "int", "appVerCode", "" + rootProject.ext.android.versionCode + ""
+//        //app version name
+//        buildConfigField "String", "appVerName", "\"" + rootProject.ext.android.versionName + "\""
+//        //application id
+//        buildConfigField "String", "applicationId", "\"" + rootProject.ext.android.applicationId + "\""
+//        //umeng app key
+//        buildConfigField "String", "UMENG_APP_KEY", properties.getProperty("umengAppKey", "\"\"")
+//        //umeng share
+//        buildConfigField "String", "SINA_WEIBO_KEY", properties.getProperty("SINA_WEIBO_KEY", "\"\"")
+//        buildConfigField "String", "SINA_WEIBO_SECRET", properties.getProperty("SINA_WEIBO_SECRET", "\"\"")
+//        buildConfigField "String", "QQ_ZONE_ID", properties.getProperty("QQ_ZONE_ID", "\"\"")
+//        buildConfigField "String", "QQ_ZONE_KEY", properties.getProperty("QQ_ZONE_KEY", "\"\"")
+//        buildConfigField "String", "WEIXIN_ID", properties.getProperty("WEIXIN_ID", "\"\"")
+//        buildConfigField "String", "WEIXIN_KEY", properties.getProperty("WEIXIN_KEY", "\"\"")
+
+//        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+
+dependencies {
+    api project(":common-res")
+    api project(":router")
+    api rootProject.ext.dependencies["appcompat-v7"]
+    api rootProject.ext.dependencies["appcompat-v7"]
+    api rootProject.ext.dependencies["design"]
+    api rootProject.ext.dependencies["cardview-v7"]
+    api rootProject.ext.dependencies["recyclerview-v7"]
+    api rootProject.ext.dependencies["constraintlayout"]
+
+    //json
+    api rootProject.ext.dependencies["gson"]
+    //network
+    api rootProject.ext.dependencies["retrofit"]
+    api rootProject.ext.dependencies["retrofit-converter-gson"]
+    api rootProject.ext.dependencies["retrofit-adapter-rxjava2"]
+    api rootProject.ext.dependencies["okhttp"]
+    api rootProject.ext.dependencies["okhttp-logging-interceptor"]
+    //image
+    api rootProject.ext.dependencies["glide"]
+    api rootProject.ext.dependencies["glide-loader-okhttp3"]
+    annotationProcessor rootProject.ext.dependencies["glide-compiler"]
+    //rx
+    api rootProject.ext.dependencies["rxjava"]
+    api rootProject.ext.dependencies["rxandroid"]
+    //di
+    api rootProject.ext.dependencies["dagger2"]
+    annotationProcessor rootProject.ext.dependencies["dagger2-compiler"]
+    api rootProject.ext.dependencies["butterknife"]
+    //other
+    api rootProject.ext.dependencies["multidex"]
+}
