@@ -3,6 +3,5 @@ apply from: "../base_component.gradle"
 apply from: "../base_component_compiler.gradle"
 dependencies {
     api fileTree(includes: ['*.jar'], dir: 'libs')
-    implementation 'com.android.support.constraint:constraint-layout:1.1.0'
     annotationProcessor rootProject.ext.dependencies["router-compiler"]
 }

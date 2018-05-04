@@ -74,9 +74,7 @@ dependencies {
     kapt 'com.airbnb:deeplinkdispatch-processor:3.1.1'
 
     //room (local)
-    implementation 'android.arch.persistence.room:runtime:1.0.0'
-    implementation 'android.arch.persistence.room:rxjava2:1.0.0'
-    kapt 'android.arch.persistence.room:compiler:1.0.0'
+
 
     kapt rootProject.ext.dependencies["router-compiler"]
 }

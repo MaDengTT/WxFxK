@@ -78,4 +78,7 @@ dependencies {
     api rootProject.ext.dependencies["butterknife"]
     //other
     api rootProject.ext.dependencies["multidex"]
+    //room
+    api rootProject.ext.dependencies["room"]
+    api rootProject.ext.dependencies["room-rx"]
 }
