@@ -13,12 +13,13 @@ android {
     compileSdkVersion rootProject.ext.android.compileSdkVersion
     defaultConfig{
         if(isRunAlone){
-            if(componentName == "circle"){
-                applicationId "com.kcrason.highperformancefriendscircle"
-            }else{
-                applicationId rootProject.ext.android.organization + "."+componentName
-            }
+            applicationId rootProject.ext.android.organization + "."+componentName
             multiDexEnabled true
+        }
+
+        compileOptions {
+            targetCompatibility JavaVersion.VERSION_1_8
+            sourceCompatibility JavaVersion.VERSION_1_8
         }
 
 
@@ -29,6 +30,7 @@ android {
         javaCompileOptions {
             annotationProcessorOptions {
                 arguments = [ moduleName : project.getName() ]
+                includeCompileClasspath true
             }
         }
 

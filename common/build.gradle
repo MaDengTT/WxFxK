@@ -10,8 +10,6 @@ apply plugin: 'com.alibaba.arouter'
 android {
     compileSdkVersion rootProject.ext.android.compileSdkVersion
 
-
-
     defaultConfig {
         minSdkVersion rootProject.ext.android.minSdkVersion
         targetSdkVersion rootProject.ext.android.targetSdkVersion
