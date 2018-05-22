@@ -5,7 +5,8 @@ package com.xxm.mmd.router;
  */
 public interface RouterConstants {
 
-    public static final String PATH_NEW_MAIN = "/news/main";
-    public static final String PATH_Circle_MAIN = "/circle/main";
+    String PATH_NEW_MAIN = "/news/main";
+    String PATH_Circle_MAIN = "/circle/main";
+    String PATH_TexMath_MAIN = "/texmath/main";
 
 }

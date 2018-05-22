@@ -72,6 +72,7 @@ dependencies {
 
     implementation project(':component-news')
     implementation project(':component-circle')
+    implementation project(':component-texmath')
     implementation"org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
     androidTestImplementation 'com.android.support.test:runner:1.0.1'

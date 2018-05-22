@@ -1,7 +1,9 @@
 package com.xxm.mmd.common;
 
+import org.json.JSONObject;
 import org.junit.Test;
 
+import static junit.framework.Assert.assertEquals;
 import static org.junit.Assert.*;
 
 /**
@@ -12,6 +14,7 @@ import static org.junit.Assert.*;
 public class ExampleUnitTest {
     @Test
     public void addition_isCorrect() {
+        JSONObject
         assertEquals(4, 2 + 2);
     }
 }

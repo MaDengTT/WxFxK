@@ -1,0 +1,9 @@
+apply from: "../base_component.gradle"
+//apply from: "../base_component_kapt.gradle"
+apply from: "../base_component_compiler.gradle"
+
+
+dependencies {
+    api fileTree(includes: ['*.jar'], dir: 'libs')
+    annotationProcessor rootProject.ext.dependencies["router-compiler"]
+}

@@ -11,6 +11,7 @@ import javax.inject.Singleton;
 import dagger.BindsInstance;
 import dagger.Component;
 import okhttp3.OkHttpClient;
+import retrofit2.Retrofit;
 
 /**
  * Created by MaDeng on 2018/5/7.
@@ -23,6 +24,8 @@ public interface AppComponent {
 
     OkHttpClient okHttpClient();
     Gson gson();
+
+    Retrofit retrofit();
 
     @Component.Builder
     interface Builder{

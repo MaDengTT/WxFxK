@@ -1,7 +1,7 @@
 package com.xxm.mmd.wxfxk.glide
 
 import android.widget.ImageView
-import com.xxm.mmd.common.image.GlideApp
+import com.xxm.mmd.common.image.glide.GlideApp
 import com.xxm.mmd.wxfxk.R
 import java.util.*
 

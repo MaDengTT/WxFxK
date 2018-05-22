@@ -10,9 +10,7 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
 import com.xxm.mmd.common.image.BaseImageLoaderStrategy;
-import com.xxm.mmd.common.image.GlideApp;
-import com.xxm.mmd.common.image.GlideRequest;
-import com.xxm.mmd.common.image.GlideRequests;
+
 import com.xxm.mmd.common.image.ImageConfig;
 import com.xxm.mmd.common.utils.Preconditions;
 
