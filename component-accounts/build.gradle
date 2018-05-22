@@ -1,0 +1,5 @@
+apply from: "../base_component.gradle"
+apply from: "../base_component_compiler.gradle"
+dependencies {
+    implementation 'com.android.support:cardview-v7:27.1.1'
+}

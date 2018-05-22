@@ -11,6 +11,7 @@
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/common" />
             <option value="$PROJECT_DIR$/common-res" />
+            <option value="$PROJECT_DIR$/component-accounts" />
             <option value="$PROJECT_DIR$/component-circle" />
             <option value="$PROJECT_DIR$/component-news" />
             <option value="$PROJECT_DIR$/component-texmath" />
