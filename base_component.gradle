@@ -14,6 +14,8 @@ android {
     defaultConfig{
         if(isRunAlone){
             applicationId rootProject.ext.android.organization + "."+componentName
+            minSdkVersion rootProject.ext.android.minSdkVersion
+            targetSdkVersion rootProject.ext.android.targetSdkVersion
             multiDexEnabled true
         }
 

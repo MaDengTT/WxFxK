@@ -15,8 +15,8 @@ ext{
             "acgschedule",
             "acgcomic",
             "news",
-            "circle",
-            "accounts"
+            "circle"/*,
+            "accounts"*/
     ]
 
 

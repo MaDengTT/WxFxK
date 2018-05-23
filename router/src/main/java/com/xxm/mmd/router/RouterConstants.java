@@ -8,5 +8,5 @@ public interface RouterConstants {
     String PATH_NEW_MAIN = "/news/main";
     String PATH_Circle_MAIN = "/circle/main";
     String PATH_TexMath_MAIN = "/texmath/main";
-
+    String PATH_accounts_login = "/accounts/login";
 }
