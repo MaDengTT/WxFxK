@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">component-recipe</string>
+    <string name="title_activity_recipe">RecipeActivity</string>
+</resources>

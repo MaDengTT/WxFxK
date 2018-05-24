@@ -1,1 +1,1 @@
-include ':app', ':common', ':common-res', ':router', ':component-news', ':component-texmath', ':component-accounts',  ":component-circle",":imagepicker"
+include ':app', ':common', ':common-res', ':router', ':component-news', ':component-texmath', ':component-accounts', ':component-recipe',  ":component-circle",":imagepicker"
