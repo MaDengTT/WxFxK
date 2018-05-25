@@ -1,7 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
+<android.support.constraint.ConstraintLayout
+    android:background="@color/public_whirth"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="16dp"
+    android:layout_marginRight="16dp"
+    android:padding="16dp"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <ImageView
@@ -17,6 +26,7 @@
 
 
     <TextView
+        android:layout_marginTop="8dp"
         android:id="@+id/tv_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -27,5 +37,18 @@
         android:text="狗子！你变了"
         app:layout_constraintTop_toBottomOf="@+id/iv_image" />
 
+    <TextView
+        android:id="@+id/tv_desc"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介"
+        app:layout_constraintLeft_toLeftOf="@+id/iv_image"
+        app:layout_constraintRight_toRightOf="@+id/iv_image"
+        android:minLines="3"
+        android:textSize="12sp"
+        app:layout_constraintTop_toBottomOf="@+id/tv_name" />
+
 
 </android.support.constraint.ConstraintLayout>
+</RelativeLayout>

@@ -79,4 +79,5 @@ dependencies {
     //room
     api rootProject.ext.dependencies["room"]
     api rootProject.ext.dependencies["room-rx"]
+    api 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.34'
 }
