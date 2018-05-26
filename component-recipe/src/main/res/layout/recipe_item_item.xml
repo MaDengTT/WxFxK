@@ -3,14 +3,18 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="wrap_content"
-    android:background="@color/public_whirth"
-    app:cardCornerRadius="13dp"
+    android:id="@+id/card_item"
+    app:cardBackgroundColor="@color/public_whirth"
+    app:cardCornerRadius="15dp"
     android:layout_marginRight="16dp"
-    app:cardElevation="1dp"
-    android:layout_height="wrap_content">
+    android:layout_marginTop="8dp"
+    android:layout_marginBottom="8dp"
+    app:cardElevation="2dp"
+    android:layout_height="30dp">
 
     <TextView
-
+        android:gravity="center"
+        android:layout_gravity="center"
         android:paddingLeft="8dp"
         android:paddingRight="8dp"
         android:paddingTop="4dp"
@@ -20,6 +24,8 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
+        android:textSize="17sp"
+        android:textColor="@color/recipe_0b0809"
         android:text="caidan"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

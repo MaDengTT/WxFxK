@@ -1,6 +1,9 @@
 package com.xxm.mmd.component_recipe.adapter;
 
 import android.support.annotation.Nullable;
+import android.support.v4.content.ContextCompat;
+import android.support.v7.widget.CardView;
+import android.view.View;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
@@ -19,5 +22,9 @@ public class ItemAdapter extends BaseQuickAdapter<String,BaseViewHolder> {
     @Override
     protected void convert(BaseViewHolder helper, String item) {
         helper.setText(R.id.tv_item, item);
+        if (helper.getAdapterPosition() == 3) {
+            CardView view = helper.getView(R.id.card_item);
+            view.setCardBackgroundColor(ContextCompat.getColor(mContext,R.color.recipe_e92d2e));
+        }
     }
 }

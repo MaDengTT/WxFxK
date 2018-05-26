@@ -11,6 +11,7 @@ import android.widget.LinearLayout;
 
 import com.leochuan.CarouselLayoutManager;
 import com.leochuan.CenterSnapHelper;
+import com.leochuan.ScaleLayoutManager;
 import com.xxm.mmd.common.utils.SizeUtils;
 import com.xxm.mmd.component_recipe.adapter.ItemAdapter;
 import com.xxm.mmd.component_recipe.adapter.RecipeAdapter;
@@ -30,7 +31,7 @@ public class RecipeActivity extends AppCompatActivity {
     LinearLayout rlTop;
     @BindView(R.id.rv_recipe)
     RecyclerView rvRecipe;
-    private CarouselPopUpWindow window;
+    private ScalePopUpWindow window;
     String[] strings = new String[]{"one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten"};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,22 +46,29 @@ public class RecipeActivity extends AppCompatActivity {
         Animation translateAnimation = AnimationUtils.loadAnimation(this, R.anim.recipe_translate);
         rlTop.startAnimation(translateAnimation);
 
-        CarouselLayoutManager layoutManager = getLayoutManager();
-
-        rvRecipe.setLayoutManager(layoutManager);
+//        CarouselLayoutManager layoutManager = getLayoutManager();
+        ScaleLayoutManager scalayoutManager = getScalayoutManager();
+        rvRecipe.setLayoutManager(scalayoutManager);
         rvRecipe.setAdapter(new RecipeAdapter(Arrays.asList(strings)));
         CenterSnapHelper centerSnapHelper = new CenterSnapHelper();
         centerSnapHelper.attachToRecyclerView(rvRecipe);
-        window = new CarouselPopUpWindow(this, layoutManager, rvRecipe);
+        window = new ScalePopUpWindow(this, scalayoutManager, rvRecipe);
     }
 
 
     CarouselLayoutManager getLayoutManager() {
+
         CarouselLayoutManager.Builder builder = new CarouselLayoutManager.Builder(this, SizeUtils.dp2px(100, this))
                 .setDistanceToBottom(345)   //间距
                 .setMinScale(0.97f)  //自小缩放比
                 .setMoveSpeed(1.0f);//滚动速度
         return new CarouselLayoutManager(builder);
+    }
+
+    ScaleLayoutManager getScalayoutManager() {
+
+        ScaleLayoutManager.Builder builder = new ScaleLayoutManager.Builder(this,SizeUtils.dp2px(0,this));
+        return new ScaleLayoutManager(builder);
     }
 
     @OnClick(R.id.but_serach)
