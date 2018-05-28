@@ -4,13 +4,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="wrap_content"
     android:id="@+id/card_item"
-    app:cardBackgroundColor="@color/public_whirth"
-    app:cardCornerRadius="15dp"
-    android:layout_marginRight="16dp"
+    app:cardBackgroundColor="@color/recipe_fdfdfe"
+    app:cardCornerRadius="13dp"
+    android:layout_marginRight="8dp"
     android:layout_marginTop="8dp"
     android:layout_marginBottom="8dp"
-    app:cardElevation="2dp"
-    android:layout_height="30dp">
+    android:layout_marginLeft="8dp"
+    app:cardElevation="5px"
+    android:layout_height="26dp">
 
     <TextView
         android:gravity="center"
@@ -21,10 +22,10 @@
         android:paddingBottom="4dp"
         android:id="@+id/tv_item"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
-        android:textSize="17sp"
+        android:textSize="13sp"
         android:textColor="@color/recipe_0b0809"
         android:text="caidan"
         app:layout_constraintStart_toStartOf="parent"

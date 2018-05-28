@@ -1,4 +1,4 @@
-package com.xxm.mmd.component_recipe;
+package com.xxm.mmd.component_recipe.view;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -10,10 +10,10 @@ import android.widget.CompoundButton;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
+import com.leochuan.CarouselLayoutManager;
 import com.leochuan.CenterSnapHelper;
-import com.leochuan.ScaleLayoutManager;
 import com.leochuan.ViewPagerLayoutManager;
-
+import com.xxm.mmd.component_recipe.R;
 
 
 /**
@@ -22,27 +22,25 @@ import com.leochuan.ViewPagerLayoutManager;
 
 @SuppressLint("InflateParams")
 @SuppressWarnings("FieldCanBeLocal")
-public class ScalePopUpWindow extends SettingPopUpWindow
+public class CarouselPopUpWindow extends SettingPopUpWindow
         implements SeekBar.OnSeekBarChangeListener, CompoundButton.OnCheckedChangeListener {
 
-    private ScaleLayoutManager scaleLayoutManager;
+    private CarouselLayoutManager carouselLayoutManager;
     private RecyclerView recyclerView;
     private TextView itemSpaceValue;
     private TextView speedValue;
     private TextView minScaleValue;
-    private TextView minAlphaValue;
-    private TextView maxAlphaValue;
     private SwitchCompat changeOrientation;
     private SwitchCompat autoCenter;
     private SwitchCompat infinite;
     private SwitchCompat reverse;
     private CenterSnapHelper centerSnapHelper;
 
-    ScalePopUpWindow(Context context, ScaleLayoutManager scaleLayoutManager, RecyclerView recyclerView) {
+    CarouselPopUpWindow(Context context, CarouselLayoutManager carouselLayoutManager, RecyclerView recyclerView) {
         super(context);
-        this.scaleLayoutManager = scaleLayoutManager;
+        this.carouselLayoutManager = carouselLayoutManager;
         this.recyclerView = recyclerView;
-        View view = LayoutInflater.from(context).inflate(R.layout.dialog_scale_setting, null);
+        View view = LayoutInflater.from(context).inflate(R.layout.recipe_dialog_carousel_setting, null);
         setContentView(view);
 
         centerSnapHelper = new CenterSnapHelper();
@@ -50,14 +48,10 @@ public class ScalePopUpWindow extends SettingPopUpWindow
         SeekBar itemSpace = view.findViewById(R.id.sb_item_space);
         SeekBar speed = view.findViewById(R.id.sb_speed);
         SeekBar minScale = view.findViewById(R.id.sb_min_scale);
-        SeekBar minAlpha = view.findViewById(R.id.sb_min_alpha);
-        SeekBar maxAlpha = view.findViewById(R.id.sb_max_alpha);
 
         itemSpaceValue = view.findViewById(R.id.item_space);
         speedValue = view.findViewById(R.id.speed_value);
         minScaleValue = view.findViewById(R.id.min_scale_value);
-        minAlphaValue = view.findViewById(R.id.min_alpha_value);
-        maxAlphaValue = view.findViewById(R.id.max_alpha_value);
 
         changeOrientation = view.findViewById(R.id.s_change_orientation);
         autoCenter = view.findViewById(R.id.s_auto_center);
@@ -67,24 +61,18 @@ public class ScalePopUpWindow extends SettingPopUpWindow
         itemSpace.setOnSeekBarChangeListener(this);
         speed.setOnSeekBarChangeListener(this);
         minScale.setOnSeekBarChangeListener(this);
-        minAlpha.setOnSeekBarChangeListener(this);
-        maxAlpha.setOnSeekBarChangeListener(this);
 
-        itemSpace.setProgress(scaleLayoutManager.getItemSpace() / 2);
-        speed.setProgress(Math.round(scaleLayoutManager.getMoveSpeed() / 0.05f));
-        minScale.setProgress(Math.round((scaleLayoutManager.getMinScale() - 0.5f) * 200));
-        maxAlpha.setProgress(Math.round(scaleLayoutManager.getMaxAlpha() * 100));
-        minAlpha.setProgress(Math.round(scaleLayoutManager.getMinAlpha() * 100));
+        itemSpace.setProgress(carouselLayoutManager.getItemSpace() / 5);
+        speed.setProgress(Math.round(carouselLayoutManager.getMoveSpeed() / 0.05f));
+        minScale.setProgress(Math.round(carouselLayoutManager.getMinScale() * 100));
 
-        itemSpaceValue.setText(String.valueOf(scaleLayoutManager.getItemSpace()));
-        speedValue.setText(String.valueOf(scaleLayoutManager.getMoveSpeed()));
-        minScaleValue.setText(String.valueOf(scaleLayoutManager.getMinScale()));
-        minAlphaValue.setText(String.valueOf(scaleLayoutManager.getMinAlpha()));
-        maxAlphaValue.setText(String.valueOf(scaleLayoutManager.getMaxAlpha()));
+        itemSpaceValue.setText(String.valueOf(carouselLayoutManager.getItemSpace()));
+        speedValue.setText(String.valueOf(carouselLayoutManager.getMoveSpeed()));
+        minScaleValue.setText(String.valueOf(carouselLayoutManager.getMinScale()));
 
-        changeOrientation.setChecked(scaleLayoutManager.getOrientation() == ViewPagerLayoutManager.VERTICAL);
-        reverse.setChecked(scaleLayoutManager.getReverseLayout());
-        infinite.setChecked(scaleLayoutManager.getInfinite());
+        changeOrientation.setChecked(carouselLayoutManager.getOrientation() == ViewPagerLayoutManager.VERTICAL);
+        reverse.setChecked(carouselLayoutManager.getReverseLayout());
+        infinite.setChecked(carouselLayoutManager.getInfinite());
 
         changeOrientation.setOnCheckedChangeListener(this);
         autoCenter.setOnCheckedChangeListener(this);
@@ -96,29 +84,19 @@ public class ScalePopUpWindow extends SettingPopUpWindow
     public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
         switch (seekBar.getId()) {
             case R.id.sb_item_space:
-                int itemSpace = progress * 2;
-                scaleLayoutManager.setItemSpace(itemSpace);
+                int itemSpace = progress * 5;
+                carouselLayoutManager.setItemSpace(itemSpace);
                 itemSpaceValue.setText(String.valueOf(itemSpace));
                 break;
             case R.id.sb_min_scale:
-                final float scale = 0.5f + (progress / 200f);
-                scaleLayoutManager.setMinScale(scale);
+                final float scale = progress / 100f;
+                carouselLayoutManager.setMinScale(scale);
                 minScaleValue.setText(String.valueOf(scale));
                 break;
             case R.id.sb_speed:
                 final float speed = progress * 0.05f;
-                scaleLayoutManager.setMoveSpeed(speed);
+                carouselLayoutManager.setMoveSpeed(speed);
                 speedValue.setText(String.valueOf(speed));
-                break;
-            case R.id.sb_max_alpha:
-                final float maxAlpha = progress / 100f;
-                scaleLayoutManager.setMaxAlpha(maxAlpha);
-                maxAlphaValue.setText(String.valueOf(maxAlpha));
-                break;
-            case R.id.sb_min_alpha:
-                final float minAlpha = progress / 100f;
-                scaleLayoutManager.setMinAlpha(minAlpha);
-                minAlphaValue.setText(String.valueOf(minAlpha));
                 break;
         }
     }
@@ -138,11 +116,11 @@ public class ScalePopUpWindow extends SettingPopUpWindow
         switch (buttonView.getId()) {
             case R.id.s_infinite:
                 recyclerView.scrollToPosition(0);
-                scaleLayoutManager.setInfinite(isChecked);
+                carouselLayoutManager.setInfinite(isChecked);
                 break;
             case R.id.s_change_orientation:
-                scaleLayoutManager.scrollToPosition(0);
-                scaleLayoutManager.setOrientation(isChecked ?
+                carouselLayoutManager.scrollToPosition(0);
+                carouselLayoutManager.setOrientation(isChecked ?
                         ViewPagerLayoutManager.VERTICAL : ViewPagerLayoutManager.HORIZONTAL);
                 break;
             case R.id.s_auto_center:
@@ -153,8 +131,8 @@ public class ScalePopUpWindow extends SettingPopUpWindow
                 }
                 break;
             case R.id.s_reverse:
-                scaleLayoutManager.scrollToPosition(0);
-                scaleLayoutManager.setReverseLayout(isChecked);
+                carouselLayoutManager.scrollToPosition(0);
+                carouselLayoutManager.setReverseLayout(isChecked);
                 break;
         }
     }

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.xxm.mmd.component_recipe.RecipeActivity">
+    tools:context="com.xxm.mmd.component_recipe.ui.recipehome.RecipeActivity">
 
     <include layout="@layout/recipe_content_recipe" />
 

@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
+    android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     >
 <android.support.constraint.ConstraintLayout
-    android:background="@color/public_whirth"
-    android:layout_width="match_parent"
+    android:elevation="1dp"
+    android:background="@color/recipe_fdfdfe"
+    android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_marginLeft="8dp"
-    android:layout_marginRight="8dp"
-    android:padding="16dp"
+
+
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <android.support.v7.widget.CardView
@@ -21,7 +21,7 @@
         app:layout_constraintTop_toTopOf="parent"
         android:layout_height="0dp"
         app:cardCornerRadius="5dp"
-        android:layout_width="0dp">
+        android:layout_width="300dp">
 
         <ImageView
             android:id="@+id/iv_image"

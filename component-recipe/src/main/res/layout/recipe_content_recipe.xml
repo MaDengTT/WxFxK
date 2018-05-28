@@ -4,30 +4,31 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/recipe_f0f0f0"
+    android:background="@color/recipe_fdfdfe"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.xxm.mmd.component_recipe.RecipeActivity"
+    tools:context="com.xxm.mmd.component_recipe.ui.recipehome.RecipeActivity"
     tools:showIn="@layout/recipe_activity_recipe">
 
     <LinearLayout
         android:id="@+id/rl_top"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
         <LinearLayout
+            android:layout_marginRight="8dp"
+            android:layout_marginLeft="8dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="45dp"
             android:gravity="center"
             android:focusable="true"
             android:focusableInTouchMode="true"
             android:orientation="horizontal">
 
             <TextView
+                android:layout_marginRight="8dp"
                 android:background="@drawable/recipe_serch_edit"
                 android:hint="搜索"
                 android:gravity="center_vertical"
@@ -37,13 +38,19 @@
                 android:layout_height="28dp"
                 android:layout_weight="1" />
 
-            <Button
+            <ImageButton
+                android:layout_marginEnd="8dp"
                 android:id="@+id/but_serach"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="搜索" />
-        </LinearLayout>
+                android:background="@drawable/recipe_serch_edit"
+                android:src="@drawable/recipe_serach"
+                android:layout_width="28dp"
+                android:layout_height="28dp" />
 
+        </LinearLayout>
+        <View
+            android:background="@color/recipe_f2f2f2"
+            android:layout_width="match_parent"
+            android:layout_height="1px"/>
         <android.support.v7.widget.RecyclerView
             android:id="@+id/rv_item"
             android:layout_width="match_parent"

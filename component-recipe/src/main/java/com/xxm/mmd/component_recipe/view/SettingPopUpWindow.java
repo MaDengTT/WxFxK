@@ -1,4 +1,4 @@
-package com.xxm.mmd.component_recipe;
+package com.xxm.mmd.component_recipe.view;
 
 import android.content.Context;
 import android.view.WindowManager;
