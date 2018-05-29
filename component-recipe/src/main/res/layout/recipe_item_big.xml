@@ -29,6 +29,7 @@
             android:layout_width="match_parent"
             android:src="@drawable/ceshi"
             android:scaleType="centerCrop"
+            android:transitionName="img_view_1"
             />
 
     </android.support.v7.widget.CardView>

@@ -25,6 +25,8 @@
             app:toolbarId="@+id/toolbar">
 
             <ImageView
+                android:id="@+id/iv_image"
+                android:transitionName="img_view_1"
                 android:src="@drawable/ceshi"
                 android:scaleType="centerCrop"
                 android:layout_width="match_parent"

@@ -3,8 +3,11 @@ package com.xxm.mmd.component_recipe.ui.recipehome;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.v4.app.ActivityOptionsCompat;
+import android.support.v4.util.Pair;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+
 import android.view.Gravity;
 import android.view.View;
 import android.view.animation.Animation;
@@ -79,7 +82,15 @@ public class RecipeActivity extends BaseActivity implements RecipeContrace.View{
         rvRecipe.addOnItemTouchListener(new OnItemClickListener() {
             @Override
             public void onSimpleItemClick(BaseQuickAdapter adapter, View view, int position) {
-                startActivity(new Intent(RecipeActivity.this, RecipeDetailsActivity.class));
+                Intent intent = new Intent(RecipeActivity.this, RecipeDetailsActivity.class);
+//                intent.putExtra("img",img)
+
+                Pair<View, String> p1 = Pair.create(view.findViewById(R.id.iv_image), "img_view_1");
+
+                ActivityOptionsCompat optionsCompat = ActivityOptionsCompat
+                        .makeSceneTransitionAnimation(RecipeActivity.this, p1);
+
+                startActivity(intent,optionsCompat.toBundle());
             }
         });
 
