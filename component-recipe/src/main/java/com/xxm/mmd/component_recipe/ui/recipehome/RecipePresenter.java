@@ -6,6 +6,8 @@ import com.xxm.mmd.component_recipe.bean.RecipeBean;
 
 import java.util.List;
 
+import javax.inject.Inject;
+
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Action;
@@ -15,7 +17,7 @@ import io.reactivex.functions.Action;
  */
 public class RecipePresenter extends BasePresenter<RecipeContrace.Model,RecipeContrace.View> implements RecipeContrace.Presenter {
 
-
+    @Inject
     public RecipePresenter(RecipeContrace.Model model, RecipeContrace.View rootView) {
         super(model, rootView);
     }

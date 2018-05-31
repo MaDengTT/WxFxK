@@ -21,8 +21,11 @@ import com.leochuan.CarouselLayoutManager;
 import com.leochuan.CenterSnapHelper;
 import com.leochuan.ScaleLayoutManager;
 import com.xxm.mmd.common.base.BaseActivity;
+import com.xxm.mmd.common.base.BaseApplication;
 import com.xxm.mmd.common.utils.SizeUtils;
 import com.xxm.mmd.component_recipe.R;
+import com.xxm.mmd.component_recipe.di.component.DaggerRecipeComponent;
+import com.xxm.mmd.component_recipe.di.module.RecipeActivityModule;
 import com.xxm.mmd.component_recipe.ui.recipedetails.RecipeDetailsActivity;
 import com.xxm.mmd.component_recipe.view.ScalePopUpWindow;
 import com.xxm.mmd.component_recipe.adapter.ItemAdapter;
@@ -31,6 +34,9 @@ import com.xxm.mmd.component_recipe.bean.RecipeBean;
 
 import java.util.Arrays;
 import java.util.List;
+
+import javax.inject.Inject;
+import javax.inject.Named;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -47,9 +53,20 @@ public class RecipeActivity extends BaseActivity implements RecipeContrace.View{
     RecyclerView rvRecipe;
     private ScalePopUpWindow window;
     String[] strings = new String[]{"one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten"};
-    private RecipeAdapter recipeAdapter;
 
-    private RecipePresenter presenter;
+
+    @Inject
+    public RecipeAdapter recipeAdapter;
+
+    @Named("recipe")
+    @Inject
+    RecyclerView.LayoutManager scalayoutManager;
+
+    @Inject
+    RecipeModule module;
+
+    @Inject
+    public RecipePresenter presenter;
 
 
     int pageSize = 15, pageNo = 0;
@@ -60,8 +77,14 @@ public class RecipeActivity extends BaseActivity implements RecipeContrace.View{
         setContentView(R.layout.recipe_activity_recipe);
         ButterKnife.bind(this);
 
+        DaggerRecipeComponent
+                .builder()
+                .recipeModule(new com.xxm.mmd.component_recipe.di.module.RecipeModule(this))
+                .appComponent(getAppComponent())
+                .recipeActivityModule(new RecipeActivityModule(this))
+                .build().Inject(this);
+
         initView();
-        presenter = new RecipePresenter(new RecipeModule(),this);
 
     }
 
@@ -74,10 +97,8 @@ public class RecipeActivity extends BaseActivity implements RecipeContrace.View{
         rlTop.startAnimation(translateAnimation);
 
 //        CarouselLayoutManager layoutManager = getLayoutManager();
-        ScaleLayoutManager scalayoutManager = getScalayoutManager();
-        rvRecipe.setLayoutManager(scalayoutManager);
 
-        recipeAdapter = new RecipeAdapter(null);
+        rvRecipe.setLayoutManager(scalayoutManager);
 
         rvRecipe.addOnItemTouchListener(new OnItemClickListener() {
             @Override
@@ -97,7 +118,7 @@ public class RecipeActivity extends BaseActivity implements RecipeContrace.View{
         rvRecipe.setAdapter(recipeAdapter);
         CenterSnapHelper centerSnapHelper = new CenterSnapHelper();
         centerSnapHelper.attachToRecyclerView(rvRecipe);
-        window = new ScalePopUpWindow(this, scalayoutManager, rvRecipe);
+        window = new ScalePopUpWindow(this, (ScaleLayoutManager) scalayoutManager, rvRecipe);
 
 
     }
@@ -110,12 +131,6 @@ public class RecipeActivity extends BaseActivity implements RecipeContrace.View{
                 .setMinScale(0.97f)  //自小缩放比
                 .setMoveSpeed(1.0f);//滚动速度
         return new CarouselLayoutManager(builder);
-    }
-
-    ScaleLayoutManager getScalayoutManager() {
-
-        ScaleLayoutManager.Builder builder = new ScaleLayoutManager.Builder(this,SizeUtils.dp2px(0,this));
-        return new ScaleLayoutManager(builder);
     }
 
     @OnClick(R.id.but_serach)

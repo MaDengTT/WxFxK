@@ -6,6 +6,8 @@ import com.xxm.mmd.component_recipe.bean.RecipeBean;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.inject.Inject;
+
 import dagger.Module;
 import io.reactivex.Observable;
 
@@ -13,6 +15,11 @@ import io.reactivex.Observable;
  * Created by MaDeng on 2018/5/28.
  */
 public class RecipeModule implements RecipeContrace.Model {
+
+    @Inject
+    public RecipeModule() {
+    }
+
     @Override
     public Observable<BaseBean<List<RecipeBean>>> getRecipeData(int id, int pageSize, int pageNo){
         List<RecipeBean> datas = new ArrayList<>();

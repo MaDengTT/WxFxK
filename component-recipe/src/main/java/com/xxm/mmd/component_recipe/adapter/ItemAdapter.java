@@ -11,10 +11,13 @@ import com.xxm.mmd.component_recipe.R;
 
 import java.util.List;
 
+import javax.inject.Inject;
+
 /**
  * Created by MaDeng on 2018/5/25.
  */
 public class ItemAdapter extends BaseQuickAdapter<String,BaseViewHolder> {
+    @Inject
     public ItemAdapter(@Nullable List<String> data) {
         super(R.layout.recipe_item_item,data);
     }
