@@ -21,7 +21,6 @@ import com.leochuan.CarouselLayoutManager;
 import com.leochuan.CenterSnapHelper;
 import com.leochuan.ScaleLayoutManager;
 import com.xxm.mmd.common.base.BaseActivity;
-import com.xxm.mmd.common.base.BaseApplication;
 import com.xxm.mmd.common.utils.SizeUtils;
 import com.xxm.mmd.component_recipe.R;
 import com.xxm.mmd.component_recipe.di.component.DaggerRecipeComponent;
@@ -93,10 +92,9 @@ public class RecipeActivity extends BaseActivity implements RecipeContrace.View{
         linearLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
         rvItem.setLayoutManager(linearLayoutManager);
         rvItem.setAdapter(new ItemAdapter(Arrays.asList(strings)));
+
         Animation translateAnimation = AnimationUtils.loadAnimation(this, R.anim.recipe_translate);
         rlTop.startAnimation(translateAnimation);
-
-//        CarouselLayoutManager layoutManager = getLayoutManager();
 
         rvRecipe.setLayoutManager(scalayoutManager);
 

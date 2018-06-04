@@ -13,7 +13,7 @@ import dagger.Provides;
 @Module
 public class RecipeActivityModule {
 
-    RecipeContrace.View view;
+    private RecipeContrace.View view;
 
     public RecipeActivityModule(RecipeContrace.View view) {
         this.view = view;
