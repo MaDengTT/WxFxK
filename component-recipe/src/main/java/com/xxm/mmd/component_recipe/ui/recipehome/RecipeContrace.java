@@ -6,6 +6,7 @@ import com.xxm.mmd.common.mvp.IModel;
 import com.xxm.mmd.common.mvp.IPresenter;
 import com.xxm.mmd.common.mvp.IView;
 import com.xxm.mmd.component_recipe.bean.RecipeBean;
+import com.xxm.mmd.component_recipe.utils.AdapterLoadMoreHelper;
 
 import java.util.List;
 import java.util.zip.Inflater;
@@ -17,16 +18,11 @@ import io.reactivex.Observable;
  */
 public interface RecipeContrace {
     interface View extends IView {
-        void setDataToRecipeAdapter(List<RecipeBean> data);
-        void addDataToRecipeAdapter(List<RecipeBean> data);
-
-        int getPageSize();
-
-        int getPageNo();
+        AdapterLoadMoreHelper getHelper();
     }
 
     interface Presenter  {
-        void loadMoreData();
+        void initData();
     }
 
     interface Model extends IModel {

@@ -3,6 +3,7 @@ package com.xxm.mmd.component_recipe.di.module;
 import com.xxm.mmd.common.di.scope.ActivityScope;
 import com.xxm.mmd.component_recipe.ui.recipehome.RecipeContrace;
 import com.xxm.mmd.component_recipe.ui.recipehome.RecipeModule;
+import com.xxm.mmd.component_recipe.utils.AdapterLoadMoreHelper;
 
 import dagger.Module;
 import dagger.Provides;
@@ -30,4 +31,6 @@ public class RecipeActivityModule {
     RecipeContrace.Model provideModel() {
         return new RecipeModule();
     }
+
+
 }

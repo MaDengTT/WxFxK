@@ -17,6 +17,7 @@ import android.widget.Toast;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.listener.OnItemClickListener;
+import com.chad.library.adapter.base.loadmore.SimpleLoadMoreView;
 import com.leochuan.CarouselLayoutManager;
 import com.leochuan.CenterSnapHelper;
 import com.leochuan.ScaleLayoutManager;
@@ -26,6 +27,7 @@ import com.xxm.mmd.component_recipe.R;
 import com.xxm.mmd.component_recipe.di.component.DaggerRecipeComponent;
 import com.xxm.mmd.component_recipe.di.module.RecipeActivityModule;
 import com.xxm.mmd.component_recipe.ui.recipedetails.RecipeDetailsActivity;
+import com.xxm.mmd.component_recipe.utils.AdapterLoadMoreHelper;
 import com.xxm.mmd.component_recipe.view.ScalePopUpWindow;
 import com.xxm.mmd.component_recipe.adapter.ItemAdapter;
 import com.xxm.mmd.component_recipe.adapter.RecipeAdapter;
@@ -67,8 +69,7 @@ public class RecipeActivity extends BaseActivity implements RecipeContrace.View{
     @Inject
     public RecipePresenter presenter;
 
-
-    int pageSize = 15, pageNo = 0;
+    public AdapterLoadMoreHelper<RecipeBean> helper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,8 +84,11 @@ public class RecipeActivity extends BaseActivity implements RecipeContrace.View{
                 .recipeActivityModule(new RecipeActivityModule(this))
                 .build().Inject(this);
 
+
+
         initView();
 
+        presenter.initData();
     }
 
     private void initView() {
@@ -112,23 +116,15 @@ public class RecipeActivity extends BaseActivity implements RecipeContrace.View{
                 startActivity(intent,optionsCompat.toBundle());
             }
         });
+        helper = new AdapterLoadMoreHelper<>(recipeAdapter, rvRecipe);
 
-        rvRecipe.setAdapter(recipeAdapter);
+
+
         CenterSnapHelper centerSnapHelper = new CenterSnapHelper();
         centerSnapHelper.attachToRecyclerView(rvRecipe);
         window = new ScalePopUpWindow(this, (ScaleLayoutManager) scalayoutManager, rvRecipe);
 
 
-    }
-
-
-    CarouselLayoutManager getLayoutManager() {
-
-        CarouselLayoutManager.Builder builder = new CarouselLayoutManager.Builder(this, SizeUtils.dp2px(100, this))
-                .setDistanceToBottom(345)   //间距
-                .setMinScale(0.97f)  //自小缩放比
-                .setMoveSpeed(1.0f);//滚动速度
-        return new CarouselLayoutManager(builder);
     }
 
     @OnClick(R.id.but_serach)
@@ -140,7 +136,6 @@ public class RecipeActivity extends BaseActivity implements RecipeContrace.View{
     public void showLoading() {
 
     }
-
     @Override
     public void hideLoading() {
 
@@ -151,39 +146,9 @@ public class RecipeActivity extends BaseActivity implements RecipeContrace.View{
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
 
-    @Override
-    public void setDataToRecipeAdapter(List<RecipeBean> data) {
-        if (recipeAdapter != null) {
-            recipeAdapter.setNewData(data);
-            if (data.size() == pageSize) {
-                recipeAdapter.loadMoreComplete();
-            }else {
-                recipeAdapter.loadMoreFail();
-            }
-        }
-    }
 
     @Override
-    public void addDataToRecipeAdapter(List<RecipeBean> data) {
-        if (recipeAdapter != null) {
-            if (data == null) {
-                recipeAdapter.loadMoreFail();
-            }else if (data.size() == pageSize) {
-                recipeAdapter.loadMoreComplete();
-            }else {
-                recipeAdapter.loadMoreEnd();
-            }
-            recipeAdapter.addData(data);
-        }
-    }
-
-    @Override
-    public int getPageSize() {
-        return pageSize;
-    }
-
-    @Override
-    public int getPageNo() {
-        return pageNo;
+    public AdapterLoadMoreHelper getHelper() {
+        return helper;
     }
 }
