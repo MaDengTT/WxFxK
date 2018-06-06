@@ -53,7 +53,7 @@ public class RecipeActivity extends BaseActivity implements RecipeContrace.View{
     @BindView(R.id.rv_recipe)
     RecyclerView rvRecipe;
     private ScalePopUpWindow window;
-    String[] strings = new String[]{"one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten"};
+
 
 
     @Inject
@@ -70,6 +70,7 @@ public class RecipeActivity extends BaseActivity implements RecipeContrace.View{
     public RecipePresenter presenter;
 
     public AdapterLoadMoreHelper<RecipeBean> helper;
+    private ItemAdapter itemAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -95,7 +96,8 @@ public class RecipeActivity extends BaseActivity implements RecipeContrace.View{
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         linearLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
         rvItem.setLayoutManager(linearLayoutManager);
-        rvItem.setAdapter(new ItemAdapter(Arrays.asList(strings)));
+        itemAdapter = new ItemAdapter(null);
+        rvItem.setAdapter(itemAdapter);
 
         Animation translateAnimation = AnimationUtils.loadAnimation(this, R.anim.recipe_translate);
         rlTop.startAnimation(translateAnimation);
@@ -123,8 +125,6 @@ public class RecipeActivity extends BaseActivity implements RecipeContrace.View{
         CenterSnapHelper centerSnapHelper = new CenterSnapHelper();
         centerSnapHelper.attachToRecyclerView(rvRecipe);
         window = new ScalePopUpWindow(this, (ScaleLayoutManager) scalayoutManager, rvRecipe);
-
-
     }
 
     @OnClick(R.id.but_serach)
@@ -150,5 +150,10 @@ public class RecipeActivity extends BaseActivity implements RecipeContrace.View{
     @Override
     public AdapterLoadMoreHelper getHelper() {
         return helper;
+    }
+
+    @Override
+    public void setItemData(List<String> data) {
+        itemAdapter.setNewData(data);
     }
 }

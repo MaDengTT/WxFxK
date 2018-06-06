@@ -19,6 +19,8 @@ import io.reactivex.Observable;
 public interface RecipeContrace {
     interface View extends IView {
         AdapterLoadMoreHelper getHelper();
+
+        void setItemData(List<String> data);
     }
 
     interface Presenter  {
@@ -27,5 +29,6 @@ public interface RecipeContrace {
 
     interface Model extends IModel {
         Observable<BaseBean<List<RecipeBean>>> getRecipeData(int id,int pageSize,int pageNo);
+        Observable<BaseBean<List<String>>> getRecipeItem();
     }
 }

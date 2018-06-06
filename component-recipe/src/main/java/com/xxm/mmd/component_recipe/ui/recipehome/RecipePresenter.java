@@ -65,6 +65,7 @@ public class RecipePresenter extends BasePresenter<RecipeContrace.Model,RecipeCo
 
     @Override
     public void initData() {
+        mModel.getRecipeItem().subscribe();
         getRecipeData();
         mView.getHelper().setListener(pageNo -> getRecipeData());
     }

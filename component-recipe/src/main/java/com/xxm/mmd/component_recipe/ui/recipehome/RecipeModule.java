@@ -4,6 +4,7 @@ import com.xxm.mmd.common.base.BaseBean;
 import com.xxm.mmd.component_recipe.bean.RecipeBean;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -37,6 +38,13 @@ public class RecipeModule implements RecipeContrace.Model {
     @Override
     public void onDestroy() {
 
+    }
+    @Override
+    public Observable<BaseBean<List<String>>> getRecipeItem() {
+        String[] strings = new String[]{"one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten"};
+        BaseBean<List<String>> bean  =new BaseBean<>();
+        bean.setData(Arrays.asList(strings));
+        return Observable.just(bean);
     }
 
 }
