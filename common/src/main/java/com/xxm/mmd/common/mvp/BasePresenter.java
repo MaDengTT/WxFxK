@@ -1,6 +1,9 @@
 package com.xxm.mmd.common.mvp;
 
+import android.arch.lifecycle.Lifecycle;
 import android.arch.lifecycle.LifecycleObserver;
+import android.arch.lifecycle.LifecycleOwner;
+import android.arch.lifecycle.OnLifecycleEvent;
 
 import com.xxm.mmd.common.utils.Preconditions;
 
@@ -16,6 +19,12 @@ public class BasePresenter<M extends IModel,V extends IView> implements IPresent
 
     protected M mModel;
     protected V mView;
+
+
+    @OnLifecycleEvent(Lifecycle.Event.ON_CREATE)
+    void onCreate(LifecycleOwner owner) {
+
+    }
 
     /**
      * 如果当前页面同时需要 Model 层和 View 层,则使用此构造函数(默认)

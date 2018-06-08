@@ -85,6 +85,7 @@ public class RecipeActivity extends BaseActivity implements RecipeContrace.View{
                 .recipeActivityModule(new RecipeActivityModule(this))
                 .build().Inject(this);
 
+        getLifecycle();
 
 
         initView();
