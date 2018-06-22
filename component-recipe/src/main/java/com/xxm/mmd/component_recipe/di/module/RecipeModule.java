@@ -7,6 +7,7 @@ import com.leochuan.ScaleLayoutManager;
 import com.xxm.mmd.common.di.scope.ActivityScope;
 import com.xxm.mmd.common.utils.SizeUtils;
 import com.xxm.mmd.component_recipe.bean.RecipeBean;
+import com.xxm.mmd.component_recipe.net.RecipeNet;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,6 +17,7 @@ import javax.inject.Named;
 import dagger.Component;
 import dagger.Module;
 import dagger.Provides;
+import retrofit2.Retrofit;
 
 /**
  * Created by MaDeng on 2018/5/31.
@@ -41,5 +43,11 @@ public class RecipeModule {
     @ActivityScope
     List<RecipeBean> provideDefaultData() {
         return new ArrayList<>();
+    }
+
+    @Provides
+    @ActivityScope
+    RecipeNet provideRecipeNet(Retrofit retrofit) {
+        return retrofit.create(RecipeNet.class);
     }
 }

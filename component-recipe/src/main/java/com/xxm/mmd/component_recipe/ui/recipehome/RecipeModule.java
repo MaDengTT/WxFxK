@@ -2,6 +2,7 @@ package com.xxm.mmd.component_recipe.ui.recipehome;
 
 import com.xxm.mmd.common.base.BaseBean;
 import com.xxm.mmd.component_recipe.bean.RecipeBean;
+import com.xxm.mmd.component_recipe.net.RecipeNet;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -17,8 +18,10 @@ import io.reactivex.Observable;
  */
 public class RecipeModule implements RecipeContrace.Model {
 
+    RecipeNet net;
     @Inject
-    public RecipeModule() {
+    public RecipeModule(RecipeNet recipeNet) {
+        net = recipeNet;
     }
 
     @Override

@@ -23,6 +23,6 @@ public class RecipeAdapter extends BaseQuickAdapter<RecipeBean,BaseViewHolder> {
 
     @Override
     protected void convert(BaseViewHolder helper, RecipeBean item) {
-
+        
     }
 }
