@@ -3,7 +3,8 @@
     package="com.xxm.mmd.component_news">
 
     <application>
-        <activity android:name=".NewMainActivity"></activity>
+        <activity android:name=".NewMainActivity" />
+        <activity android:name=".NewDetailActivity"></activity>
     </application>
 
 </manifest>
