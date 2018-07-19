@@ -3,8 +3,6 @@ apply from: "../base_component.gradle"
 //apply from: "../base_component_kapt.gradle"
 apply from: "../base_component_kapt.gradle"
 dependencies {
-    api fileTree(includes: ['*.jar'], dir: 'libs')
     kapt rootProject.ext.dependencies["router-compiler"]
 }
-
 
