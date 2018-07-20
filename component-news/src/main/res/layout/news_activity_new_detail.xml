@@ -7,6 +7,17 @@
     android:orientation="vertical"
     tools:context=".NewDetailActivity">
 
+    <com.xxm.mmd.component_news.HzJView
+        android:layout_width="175dp"
+        android:layout_height="186dp"
+        android:background="#ccc"
+        android:paddingBottom="40dp"
+        android:paddingLeft="20dp"
+        app:HzArcWidth="10dp"
+        app:HzCircleColor="#33b5e5"
+        app:HzText="Hello, HzJView"
+        app:HzTextSize="24sp" />
+
     <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
