@@ -70,7 +70,7 @@ dependencies {
 
     implementation project(':common')
 
-    implementation project(':component-news')
+//    implementation project(':component-news')
     implementation project(':component-circle')
     implementation project(':component-texmath')
     implementation"org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"

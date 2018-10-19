@@ -1,0 +1,10 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <declare-styleable name="HzJView" tools:ignore="ResourceName">
+        <attr name="HzCircleColor" format="color" />
+        <attr name="HzArcColor" format="color" />
+        <attr name="HzText" format="string" />
+        <attr name="HzArcWidth" format="dimension"/>
+        <attr name="HzTextSize" format="dimension"/>
+        <attr name="HzTextColor" format="color"/>
+    </declare-styleable>
+</resources>

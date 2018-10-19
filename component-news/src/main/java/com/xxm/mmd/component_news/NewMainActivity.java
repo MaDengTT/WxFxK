@@ -2,6 +2,7 @@ package com.xxm.mmd.component_news;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.xxm.mmd.common.base.BaseActivity;
@@ -14,5 +15,7 @@ public class NewMainActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.news_activity_new_main);
+
+
     }
 }
